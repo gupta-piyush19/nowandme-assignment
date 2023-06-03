@@ -37,7 +37,7 @@ export default function AuthForm({ variant, children }: AuthFormProps) {
 
   return (
     <div className="bg-gradient-border text-primary-color max-w-[467px] mx-auto p-[2px] rounded-[8px] flex-1">
-      <div className="py-10 px-6 bg-bg-color rounded-[8px]">
+      <div className="py-10 px-6 bg-modal-bg-color rounded-[8px]">
         <form>
           <h1 className="text-sm font-medium uppercase text-center text-tertiary-color mb-2 tracking-[0.03em] leading-[16.94px]">
             {heading}
@@ -47,11 +47,12 @@ export default function AuthForm({ variant, children }: AuthFormProps) {
           </p>
           <div className="mt-11 mb-5">{children}</div>
           <Button text={formButtonText} />
-          <p className="text-secondary-color mt-3">
+          <p className="text-sm text-secondary-color mt-3">
             {footerText}
             <Link
               href={footerLink}
               className="text-primary-color font-semibold ml-1"
+              tabIndex={0}
             >
               {footerLinkText} &rarr;
             </Link>

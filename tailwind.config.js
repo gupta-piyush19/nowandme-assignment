@@ -14,7 +14,8 @@ module.exports = {
         "secondary-color": "#7F8084",
         "tertiary-color": "#6B6C70",
         "border-primary": "#35373B",
-        "bg-color": "#191920",
+        "modal-bg-color": "#27292D",
+        "comment-bg-color": "#191920",
       },
       backgroundImage: {
         "gradient-color":
