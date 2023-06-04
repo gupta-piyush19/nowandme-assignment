@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Button from "./Button";
+import { useRouter } from "next/router";
 
 interface AuthFormProps {
   variant: "login" | "register";
@@ -35,6 +36,13 @@ export default function AuthForm({ variant, children }: AuthFormProps) {
     footerLinkText,
   } = data[variant];
 
+  const router = useRouter();
+
+  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.preventDefault();
+    router.push("/home");
+  };
+
   return (
     <div className="bg-gradient-border text-primary-color max-w-[467px] mx-auto p-[2px] rounded-[8px] flex-1">
       <div className="py-10 px-6 bg-modal-bg-color rounded-[8px]">
@@ -46,7 +54,7 @@ export default function AuthForm({ variant, children }: AuthFormProps) {
             {subHeading}
           </p>
           <div className="mt-11 mb-5">{children}</div>
-          <Button text={formButtonText} />
+          <Button text={formButtonText} onClick={handleSubmit} />
           <p className="text-sm text-secondary-color mt-3">
             {footerText}
             <Link

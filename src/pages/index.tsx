@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Login from "./login";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
           content="Whether you want to express your feelings, talk to a therapist online or when it feels like i need to talk to someone about my feelings online. Connect with Now&Me experts and share your feelings."
         />
       </Head>
+      <Login />
     </>
   );
 }
