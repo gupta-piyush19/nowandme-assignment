@@ -1,8 +1,15 @@
 import Button from "./Button";
 
-export default function CreatePost() {
+interface CreatePostProps {
+  showModal: () => void;
+}
+
+export default function CreatePost({ showModal }: CreatePostProps) {
   return (
-    <div className="w-full px-5 py-6 border-2 border-border-primary rounded-lg bg-modal-bg-color mb-4 cursor-pointer">
+    <div
+      className="w-full px-5 py-6 border-2 border-border-primary rounded-lg bg-modal-bg-color mb-4 cursor-pointer"
+      onClick={showModal}
+    >
       <h3 className="text-lg leading-[21.78px] text-primary-color font-medium mb-4">
         Create post
       </h3>

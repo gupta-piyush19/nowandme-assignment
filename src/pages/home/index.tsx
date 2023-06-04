@@ -1,4 +1,6 @@
 import CreatePost from "@/common/components/CreatePost";
+import LoginForm from "@/common/components/LoginForm";
+import Modal from "@/common/components/Modal";
 import PostItem from "@/common/components/PostItem";
 import Head from "next/head";
 import React from "react";
@@ -25,6 +27,16 @@ const data = [
 ];
 
 const Home = () => {
+  const [show, setShow] = React.useState(true);
+
+  const showModal = () => {
+    setShow(true);
+  };
+
+  const hideModal = () => {
+    setShow(false);
+  };
+
   return (
     <>
       <Head>
@@ -39,7 +51,7 @@ const Home = () => {
             How are you doing today? Would you like to share something with the
             community 🤗
           </p>
-          <CreatePost />
+          <CreatePost showModal={showModal} />
           {data.map((item, index) => (
             <PostItem
               key={index}
@@ -49,10 +61,12 @@ const Home = () => {
               emoji={item.emoji}
               content={item.content}
               comments={item.comments}
+              showModal={showModal}
             />
           ))}
         </div>
       </div>
+      {show && <Modal hideModal={hideModal} />}
     </>
   );
 };

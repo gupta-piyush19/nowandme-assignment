@@ -3,6 +3,8 @@ import Button from "./Button";
 import { useRouter } from "next/router";
 
 interface AuthFormProps {
+  isModal?: boolean;
+  hideModal?: () => void;
   variant: "login" | "register";
   children: React.ReactNode;
 }
@@ -26,7 +28,12 @@ const data = {
   },
 };
 
-export default function AuthForm({ variant, children }: AuthFormProps) {
+export default function AuthForm({
+  isModal,
+  hideModal,
+  variant,
+  children,
+}: AuthFormProps) {
   const {
     heading,
     subHeading,
@@ -40,7 +47,7 @@ export default function AuthForm({ variant, children }: AuthFormProps) {
 
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
-    router.push("/home");
+    isModal ? hideModal?.() : router.push("/home");
   };
 
   return (

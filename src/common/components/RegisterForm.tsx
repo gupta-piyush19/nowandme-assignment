@@ -1,9 +1,17 @@
 import AuthForm from "./AuthForm";
 import FormField from "./FormField";
 
-export default function RegisterForm() {
+interface RegisterFormProps {
+  isModal?: boolean;
+  hideModal?: () => void;
+}
+
+export default function RegisterForm({
+  isModal = false,
+  hideModal,
+}: RegisterFormProps) {
   return (
-    <AuthForm variant="register">
+    <AuthForm variant="register" isModal={isModal} hideModal={hideModal}>
       <FormField
         key={"email"}
         label="Email"

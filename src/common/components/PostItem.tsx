@@ -8,6 +8,7 @@ interface PostItemProps {
   emoji: string;
   content: string;
   comments: string;
+  showModal: () => void;
 }
 
 export default function PostItem({
@@ -17,9 +18,13 @@ export default function PostItem({
   emoji,
   content,
   comments,
+  showModal,
 }: PostItemProps) {
   return (
-    <div className="w-full px-5 py-6 border-2 border-border-primary rounded-lg bg-modal-bg-color mb-4 cursor-pointer">
+    <div
+      className="w-full px-5 py-6 border-2 border-border-primary rounded-lg bg-modal-bg-color mb-4 cursor-pointer"
+      onClick={showModal}
+    >
       <div className="flex items-center justify-between mb-5">
         <div className="flex gap-4 items-center">
           <div className="shrink-0 rounded-full ">
