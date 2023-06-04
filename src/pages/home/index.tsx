@@ -43,7 +43,7 @@ const Home = () => {
         <title>Home | Jane</title>
       </Head>
       <div className="w-full h-full flex items-center justify-center">
-        <div className="container m-auto max-w-3xl">
+        <div className="container m-auto max-w-3xl py-12">
           <h1 className="text-primary-color text-[28px] leading-[33.89px] font-medium mb-3">
             Hello Jane
           </h1>
