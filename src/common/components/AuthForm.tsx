@@ -47,7 +47,7 @@ export default function AuthForm({
 
   const router = useRouter();
 
-  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     isModal ? hideModal?.() : router.push("/home");
   };
@@ -59,7 +59,7 @@ export default function AuthForm({
   return (
     <div className="bg-gradient-border text-primary-color max-w-[467px] mx-auto p-[2px] rounded-[8px] flex-1">
       <div className="py-10 px-6 bg-modal-bg-color rounded-[8px] relative">
-        <form>
+        <form onSubmit={handleSubmit}>
           <h1 className="text-sm font-medium uppercase text-center text-tertiary-color mb-2 tracking-[0.03em] leading-[16.94px]">
             {heading}
           </h1>
@@ -67,7 +67,7 @@ export default function AuthForm({
             {subHeading}
           </p>
           <div className="mt-11 mb-5">{children}</div>
-          <Button text={formButtonText} onClick={handleSubmit} />
+          <Button text={formButtonText} type="submit" />
           <p className="text-sm text-secondary-color mt-3 flex">
             <span>{footerText}</span>
             <span

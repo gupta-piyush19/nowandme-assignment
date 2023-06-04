@@ -66,7 +66,7 @@ const Home = () => {
           ))}
         </div>
       </div>
-      {show && <Modal hideModal={hideModal} />}
+      <Modal hideModal={hideModal} show={show} />
     </>
   );
 };
