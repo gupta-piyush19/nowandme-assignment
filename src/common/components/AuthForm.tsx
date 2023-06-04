@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Image from "next/image";
 import Button from "./Button";
 import { useRouter } from "next/router";
 
@@ -7,6 +7,7 @@ interface AuthFormProps {
   hideModal?: () => void;
   variant: "login" | "register";
   children: React.ReactNode;
+  changeFormType?: () => void;
 }
 
 const data = {
@@ -33,6 +34,7 @@ export default function AuthForm({
   hideModal,
   variant,
   children,
+  changeFormType,
 }: AuthFormProps) {
   const {
     heading,
@@ -50,9 +52,13 @@ export default function AuthForm({
     isModal ? hideModal?.() : router.push("/home");
   };
 
+  const routeHandler = () => {
+    isModal ? changeFormType?.() : router.push(footerLink);
+  };
+
   return (
     <div className="bg-gradient-border text-primary-color max-w-[467px] mx-auto p-[2px] rounded-[8px] flex-1">
-      <div className="py-10 px-6 bg-modal-bg-color rounded-[8px]">
+      <div className="py-10 px-6 bg-modal-bg-color rounded-[8px] relative">
         <form>
           <h1 className="text-sm font-medium uppercase text-center text-tertiary-color mb-2 tracking-[0.03em] leading-[16.94px]">
             {heading}
@@ -62,17 +68,24 @@ export default function AuthForm({
           </p>
           <div className="mt-11 mb-5">{children}</div>
           <Button text={formButtonText} onClick={handleSubmit} />
-          <p className="text-sm text-secondary-color mt-3">
-            {footerText}
-            <Link
-              href={footerLink}
-              className="text-primary-color font-semibold ml-1"
-              tabIndex={0}
+          <p className="text-sm text-secondary-color mt-3 flex">
+            <span>{footerText}</span>
+            <span
+              className="text-primary-color font-semibold ml-1 cursor-pointer"
+              onClick={routeHandler}
             >
               {footerLinkText} &rarr;
-            </Link>
+            </span>
           </p>
         </form>
+        {isModal && (
+          <div
+            className="absolute top-4 right-4 cursor-pointer h-[32px] w-[32px] flex items-center justify-center rounded-full bg-close-btn-bg-color"
+            onClick={hideModal}
+          >
+            <Image src="/icons/x.svg" width={10} height={10} alt="close" />
+          </div>
+        )}
       </div>
     </div>
   );

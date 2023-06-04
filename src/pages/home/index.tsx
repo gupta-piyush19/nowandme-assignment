@@ -27,7 +27,7 @@ const data = [
 ];
 
 const Home = () => {
-  const [show, setShow] = React.useState(true);
+  const [show, setShow] = React.useState(false);
 
   const showModal = () => {
     setShow(true);

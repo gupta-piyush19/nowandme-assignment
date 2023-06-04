@@ -16,6 +16,7 @@ module.exports = {
         "border-primary": "#35373B",
         "modal-bg-color": "#27292D",
         "comment-bg-color": "#191920",
+        "close-btn-bg-color": "#131319",
       },
       backgroundImage: {
         "gradient-color":
